@@ -6,8 +6,10 @@ typedef struct dynamic_array{
 	int *array;
 }stack_t;
 
-int main(){
+stack_t *create()
 
+int main(){
+	stack_t *html_stack = create();
 }
 
 stack_t *create(){
