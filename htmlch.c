@@ -20,7 +20,7 @@ void listele();
 
 int main(void){
 	stack_t *html_stack = create();
-	char coc[100][100];
+	char coc[100][10];
 		int i = 0;
 		char chr; 
 		FILE *code; 
@@ -92,7 +92,7 @@ stack_t *create(){
 
 void push(stack_t *S,char sarr[]){
 	sizeadder(S);
-	S -> array[++S -> top] = sarr;
+	S -> array[++S -> top] = (int) sarr;
 
 }
 
@@ -105,7 +105,7 @@ char* peek(stack_t *S){
 	if(isEmpty(S))
 	  return " ";
 	else
-	  return S -> array[S -> top];
+	  return (char *) S -> array[S -> top];
 }
 
 void pop(stack_t *S){
