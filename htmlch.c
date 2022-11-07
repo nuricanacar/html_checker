@@ -42,6 +42,7 @@ int main(void){
 						chr = fgetc(code); 
 					}
 				}
+				push(html_stack,coc[i]);
 				i++;
 			}
 			
@@ -55,6 +56,7 @@ int main(void){
 		int a = -1; 
 		while(a != i)	
 		printf("%s\n",coc[++a]);
+		listele(html_stack);
 }
 
 stack_t *create(){
@@ -106,7 +108,7 @@ int isEmpty(stack_t *S){
 void listele(stack_t *S){
         int temp = S -> top;
         while(temp != -1){
-        	printf("%d ", S -> array[temp]);
+        	printf("%s ", S -> array[temp]);
         	temp = temp - 1;
 		}
 		printf("\n");
