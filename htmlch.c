@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
+#include <string.h> 
 
 typedef struct dynamic_array{
 	int top;
@@ -41,9 +42,18 @@ int main(void){
 					{
 						chr = fgetc(code); 
 					}
+				}	
+				if (!strcmp(coc[i],peek(html_stack)))
+				{
+					pop(html_stack);
+				i++;
+
 				}
+				else
+				{
 				push(html_stack,coc[i]);
 				i++;
+				}
 			}
 			
 			
@@ -54,9 +64,17 @@ int main(void){
 		} 
 		fclose(code);
 		int a = -1; 
-		while(a != i)	
-		printf("%s\n",coc[++a]);
-		listele(html_stack);
+		//while(a != i)	
+		//printf("%s\n",coc[++a]);
+
+
+		//listele(html_stack);
+		//printf("%d",!strcmp(coc[0],peek(html_stack)));
+		if(isEmpty(html_stack))
+		  printf("Hata Bulunmadi");
+		else
+		  printf("Kapatilmamis tag var kontrol ediniz");
+
 }
 
 stack_t *create(){
@@ -84,7 +102,10 @@ void sizeadder(stack_t *S){
 }
 
 char* peek(stack_t *S){
-	return S -> array[S -> top];
+	if(isEmpty(S))
+	  return " ";
+	else
+	  return S -> array[S -> top];
 }
 
 void pop(stack_t *S){
@@ -94,17 +115,6 @@ void pop(stack_t *S){
 int isEmpty(stack_t *S){
     return S -> top == -1;
 }
-
-
-
-
-
-
-
-
-
-
-
 void listele(stack_t *S){
         int temp = S -> top;
         while(temp != -1){
