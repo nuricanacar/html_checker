@@ -24,7 +24,8 @@ int main(void){
 
 	FILE *code;
 	printf("Kontrol etmek istediginiz dosyanin adini giriniz(uzantisi ile): ");
-	scanf("%s",&filename); 
+	scanf("%s",&filename);
+	printf("\n");
 	code=fopen(filename,"r");
 	
 	while(chr!=EOF)
@@ -58,6 +59,11 @@ int main(void){
 					i++;
 				}
 			}
+		}
+		else
+		{
+		  printf("O isimde bir dosya bulunamadi\n");
+		  return;
 		}
 	} 
 
