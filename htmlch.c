@@ -19,16 +19,19 @@ int main(void){
 	stack_t *html_stack = create();
 	static char coc[100][10];
 	int i = 0;
-	char chr; 
-	
-	FILE *code; 
-	code=fopen("html.html","r"); 
+	char chr;
+	char filename[15];
+
+	FILE *code;
+	printf("Kontrol etmek istediginiz dosyanin adini giriniz(uzantisi ile): ");
+	scanf("%s",&filename); 
+	code=fopen(filename,"r");
 	
 	while(chr!=EOF)
 	{ 
 		if(code != NULL)
 		{ 
-			chr = fgetc(code); 
+			chr = fgetc(code);
 			while (chr == '<')
 			{
 				int a = 0;
@@ -37,11 +40,11 @@ int main(void){
 					if ( chr != '/')
 					{
 						coc[i][a++] = chr;
-						chr = fgetc(code); 
+						chr = fgetc(code);
 					}
 					else
 					{
-						chr = fgetc(code); 
+						chr = fgetc(code);
 					}
 				}	
 				if (!strcmp(coc[i],peek(html_stack)))
@@ -57,7 +60,7 @@ int main(void){
 			}
 		}
 	} 
-	
+
 	fclose(code);
 
 	if(isEmpty(html_stack))
