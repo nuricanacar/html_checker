@@ -15,24 +15,25 @@ char* peek();
 void pop();
 int isEmpty();
 
-void listele();
-
-
 int main(void){
 	stack_t *html_stack = create();
 	static char coc[100][10];
-		int i = 0;
-		char chr; 
-		FILE *code; 
-		code=fopen("html.html","r"); 
-		while(chr!=EOF){ 
-			if(code != NULL){ 
+	int i = 0;
+	char chr; 
+	
+	FILE *code; 
+	code=fopen("html.html","r"); 
+	
+	while(chr!=EOF)
+	{ 
+		if(code != NULL)
+		{ 
 			chr = fgetc(code); 
 			while (chr == '<')
 			{
-			int a = 0;
-			while( chr != '>' && chr != ' ')
-			{
+				int a = 0;
+				while( chr != '>' && chr != ' ')
+				{
 					if ( chr != '/')
 					{
 						coc[i][a++] = chr;
@@ -46,35 +47,23 @@ int main(void){
 				if (!strcmp(coc[i],peek(html_stack)))
 				{
 					pop(html_stack);
-				i++;
-
+					i++;
 				}
 				else
 				{
-				push(html_stack,coc[i]);
-				i++;
+					push(html_stack,coc[i]);
+					i++;
 				}
 			}
-			
-			
-		} 
-		else 
-		printf("yok"); 
+		}
+	} 
+	
+	fclose(code);
 
-		} 
-		fclose(code);
-		int a = -1; 
-		//while(a != i)	
-		//printf("%s\n",coc[++a]);
-
-
-		//listele(html_stack);
-		//printf("%d",!strcmp(coc[0],peek(html_stack)));
-		if(isEmpty(html_stack))
-		  printf("Hata Bulunmadi");
-		else
-		  printf("Kapatilmamis tag var kontrol ediniz");
-
+	if(isEmpty(html_stack))
+	  printf("Hata Bulunmadi");
+	else
+	  printf("Kapatilmamis tag var kontrol ediniz");
 }
 
 stack_t *create(){
@@ -114,12 +103,4 @@ void pop(stack_t *S){
 
 int isEmpty(stack_t *S){
     return S -> top == -1;
-}
-void listele(stack_t *S){
-        int temp = S -> top;
-        while(temp != -1){
-        	printf("%s ", S -> array[temp]);
-        	temp = temp - 1;
-		}
-		printf("\n");
 }
