@@ -20,7 +20,7 @@ void listele();
 
 int main(void){
 	stack_t *html_stack = create();
-	char coc[100][10];
+	static char coc[100][10];
 		int i = 0;
 		char chr; 
 		FILE *code; 
